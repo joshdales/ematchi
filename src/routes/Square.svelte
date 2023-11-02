@@ -1,4 +1,8 @@
-<div class="square" />
+<script lang="ts">
+	export let emoji: string;
+</script>
+
+<div class="square">{emoji}</div>
 
 <style>
 	div {

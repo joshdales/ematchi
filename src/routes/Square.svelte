@@ -26,6 +26,7 @@
 	}
 
 	span {
+		pointer-events: none;
 		font-size: 5em;
 	}
 </style>

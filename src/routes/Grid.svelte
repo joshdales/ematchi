@@ -4,6 +4,8 @@
 
 	let a: number = -1;
 	let b: number = -1;
+
+	let reset_timeout: number;
 </script>
 
 <div class="grid">
@@ -12,7 +14,20 @@
 			{emoji}
 			selected={a === i || b === i}
 			on:click={() => {
+				clearTimeout(reset_timeout);
 				if (a === -1 && b === -1) {
+					a = i;
+				} else if (b === -1) {
+					b = i;
+					if (grid[a] === grid[b]) {
+						// correct
+					} else {
+						reset_timeout = setTimeout(() => {
+							a = b = -1;
+						}, 1000);
+					}
+				} else {
+					b = -1;
 					a = i;
 				}
 			}}

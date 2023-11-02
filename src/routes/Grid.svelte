@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import Square from './Square.svelte';
 
+	export let size: number;
 	export let grid: string[];
 	export let found: string[];
 	const dispatch = createEventDispatcher();
@@ -12,7 +13,7 @@
 	let reset_timeout: number;
 </script>
 
-<div class="grid">
+<div class="grid" style="--columns:{size}">
 	{#each grid as emoji, i}
 		<Square
 			{emoji}
@@ -43,8 +44,8 @@
 <style>
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(4, 1fr);
+		grid-template-columns: repeat(var(--columns), 1fr);
+		grid-template-rows: repeat(var(--columns), 1fr);
 		height: 100%;
 		gap: 0.5em;
 	}

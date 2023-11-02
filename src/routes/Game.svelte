@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Found from './Found.svelte';
 	import Grid from './Grid.svelte';
 
 	import { levels } from './levels';
@@ -28,10 +29,11 @@
 	}
 </script>
 
-<div class="game">
+<div class="game centred">
 	<div class="info" />
 	<div class="grid-container">
 		<Grid
+			{size}
 			{grid}
 			on:found={(e) => {
 				found = [...found, e.detail.emoji];
@@ -39,15 +41,15 @@
 			{found}
 		/>
 	</div>
-	<div class="info" />
+
+	<div class="info">
+		<Found {found} />
+	</div>
 </div>
 
 <style>
 	.game {
-		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 		font-size: min(1vmin, 0.5em);
 		height: 100%;
 	}

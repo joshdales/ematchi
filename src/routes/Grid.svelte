@@ -19,6 +19,7 @@
 			{emoji}
 			selected={a === i || b === i}
 			found={found.includes(emoji)}
+			group={grid.indexOf(emoji) === i ? 'a' : 'b'}
 			on:click={() => {
 				clearTimeout(reset_timeout);
 				if (a === -1 && b === -1) {

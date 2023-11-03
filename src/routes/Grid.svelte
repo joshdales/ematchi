@@ -48,5 +48,6 @@
 		grid-template-rows: repeat(var(--columns), 1fr);
 		height: 100%;
 		gap: 0.5em;
+		perspective: 100vw;
 	}
 </style>

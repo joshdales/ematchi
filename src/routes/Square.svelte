@@ -6,7 +6,7 @@
 	export let emoji: string;
 </script>
 
-<div class="square" class:flipped={selected} class:found>
+<div class="centred" class:flipped={selected || found} class:found>
 	<button on:click />
 	{#if !found}
 		<img src={get_twemoji_url(emoji)} alt={emoji} />
@@ -15,23 +15,38 @@
 
 <style>
 	div {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		border-radius: 1em;
+		transform-style: preserve-3d;
+		transition: transform 0.4s;
 	}
 
-	.flipped button {
-		background-color: red;
+	.flipped,
+	.found {
+		transform: rotateY(180deg);
+		border: 0.5em solid #eee;
+		padding: 1em;
+	}
+
+	.found {
+		background-color: #fff;
 	}
 
 	button {
 		position: absolute;
 		width: 100%;
 		height: 100%;
+		backface-visibility: hidden;
+		background-color: #eee;
+		border: none;
+		font-size: inherit;
+		border-radius: 1em;
 	}
 
 	img {
 		pointer-events: none;
-		font-size: 5em;
+		height: 100%;
+		width: 100%;
+		transform: rotateY(180deg);
+		backface-visibility: hidden;
 	}
 </style>

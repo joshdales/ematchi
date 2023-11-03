@@ -4,6 +4,8 @@
 	import Modal from './Modal.svelte';
 	import { levels } from './levels';
 
+	import { confetti } from '@neoconfetti/svelte';
+
 	let state: 'waiting' | 'playing' | 'paused' | 'won' | 'lost' = 'waiting';
 	let game: Game;
 </script>
@@ -53,3 +55,24 @@
 		</div>
 	</Modal>
 {/if}
+
+{#if state === 'won'}
+	<div
+		class="confetti"
+		use:confetti={{
+			stageWidth: innerWidth,
+			stageHeight: innerHeight
+		}}
+	/>
+{/if}
+
+<style>
+	.confetti {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 30%;
+		left: 50%;
+		pointer-events: none;
+	}
+</style>
